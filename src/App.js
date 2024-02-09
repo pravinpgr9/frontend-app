@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import EmployeeList from './components/EmployeeList';
+import AddEmployeeForm from './components/AddEmployeeForm';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
+import EditEmployeeForm from './components/EditEmployeeForm'; // Import EditEmployeeForm
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Router>
+      <Routes> {/* Use Routes instead of Switch */}
+        <Route exact path="/" element={<EmployeeList />} /> {/* Use element prop instead of component */}
+        <Route path="/add-employee" element={<AddEmployeeForm />} /> {/* Use element prop instead of component */}
+        <Route path="/edit-employee/:id" element={<EditEmployeeForm></EditEmployeeForm>} /> {/* Define route for edit employee form */}
+      </Routes> {/* Use Routes instead of Switch */}
+    </Router>
+    
   );
-}
+};
 
 export default App;
